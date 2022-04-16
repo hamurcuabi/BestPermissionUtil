@@ -39,24 +39,3 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
-ext {
-    PUBLISH_GROUP_ID = 'io.github.hamurcuabi'
-    PUBLISH_VERSION = '3.0.0'
-    PUBLISH_ARTIFACT_ID = 'permy'
-    PUBLISH_DESCRIPTION = 'Permy Android SDK'
-    PUBLISH_URL = 'https://github.com/hamurcuabi/BestPermissionUtil'
-    PUBLISH_LICENSE_NAME = 'Apache License'
-    PUBLISH_LICENSE_URL =
-            'https://github.com/hamurcuabi/BestPermissionUtil'
-    PUBLISH_DEVELOPER_ID = 'hamurcuabi'
-    PUBLISH_DEVELOPER_NAME = 'Emre hamurcu'
-    PUBLISH_DEVELOPER_EMAIL = 'emrehamurcu_1995@hotmail.com'
-    PUBLISH_SCM_CONNECTION =
-            'scm:git://github.com/hamurcuabi/BestPermissionUtil.git'
-    PUBLISH_SCM_DEVELOPER_CONNECTION =
-            'scm:git:ssh://github.com/hamurcuabi/BestPermissionUtil.git'
-    PUBLISH_SCM_URL =
-            'https://github.com/hamurcuabi/BestPermissionUtil/tree/master'
-}
-
-apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"

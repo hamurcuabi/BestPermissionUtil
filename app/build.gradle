@@ -41,6 +41,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation project(path: ':permy')
+    implementation 'com.github.hamurcuabi:BestPermissionUtil:1.0.0'
 
 }
