@@ -18,6 +18,8 @@ allprojects {
 
 ## Dependency
 
+![](https://jitpack.io/v/hamurcuabi/BestPermissionUtil.svg)
+
 Add this to your module's `build.gradle` file (make sure the version matches the JitPack badge above):
 
 ```gradle
