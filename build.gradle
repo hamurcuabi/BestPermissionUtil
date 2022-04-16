@@ -8,3 +8,8 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    pomVersion = '1.0.0'
+    pomGroupID = "com.emrhmrc.permy"
+}
