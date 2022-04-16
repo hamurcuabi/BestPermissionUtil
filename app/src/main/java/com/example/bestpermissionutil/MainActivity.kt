@@ -2,9 +2,11 @@ package com.example.bestpermissionutil
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bestpermissionutil.PermissionUtil.launchMultiplePermission
-import com.example.bestpermissionutil.PermissionUtil.launchSinglePermission
-import com.example.bestpermissionutil.PermissionUtil.registerPermission
+import com.emrhmrc.permy.PermissionUtil
+import com.emrhmrc.permy.PermissionUtil.PermissionState.*
+import com.emrhmrc.permy.PermissionUtil.launchMultiplePermission
+import com.emrhmrc.permy.PermissionUtil.launchSinglePermission
+import com.emrhmrc.permy.PermissionUtil.registerPermission
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,13 +20,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun onStoragePermissionResult(state: PermissionUtil.PermissionState) {
         when (state) {
-            PermissionUtil.PermissionState.Denied -> {
+            Denied -> {
                 TODO()
             }
-            PermissionUtil.PermissionState.Granted -> {
+            Granted -> {
                 TODO()
             }
-            PermissionUtil.PermissionState.PermanentlyDenied -> {
+            PermanentlyDenied -> {
                 TODO()
             }
         }
@@ -32,13 +34,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun onCameraPermissionResult(state: PermissionUtil.PermissionState) {
         when (state) {
-            PermissionUtil.PermissionState.Denied -> {
+            Denied -> {
                 TODO()
             }
-            PermissionUtil.PermissionState.Granted -> {
+            Granted -> {
                 TODO()
             }
-            PermissionUtil.PermissionState.PermanentlyDenied -> {
+            PermanentlyDenied -> {
                 TODO()
             }
         }

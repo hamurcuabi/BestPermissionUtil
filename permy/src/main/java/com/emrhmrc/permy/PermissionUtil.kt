@@ -1,4 +1,4 @@
-package com.example.bestpermissionutil
+package com.emrhmrc.permy
 
 import android.app.Activity
 import androidx.activity.result.ActivityResultLauncher
