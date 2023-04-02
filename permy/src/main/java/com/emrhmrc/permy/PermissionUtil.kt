@@ -18,34 +18,23 @@ object PermissionUtil {
         object PermanentlyDenied : PermissionState()
     }
 
-    private fun getPermissionState(
-        activity: Activity?,
-        result: MutableMap<String, Boolean>
-    ): PermissionState {
-        val deniedList: List<String> = result.filter {
-            it.value.not()
-        }.map {
-            it.key
-        }
+    private fun getPermissionState(activity: Activity, result: Map<String, Boolean>): PermissionState {
+    val deniedPermissions = result.filterValues { !it }.keys
 
-        var state = when (deniedList.isEmpty()) {
-            true -> PermissionState.Granted
-            false -> PermissionState.Denied
-        }
+    return when {
+        deniedPermissions.isEmpty() -> PermissionState.Granted
+        deniedPermissions.any { permission ->
+            !shouldShowRequestPermissionRationale(
+                /* activity = */
+                activity,
+                /* permission = */
+                permission
+            )
+        } -> PermissionState.PermanentlyDenied
 
-        if (state == PermissionState.Denied) {
-            val permanentlyMappedList = deniedList.map {
-                activity?.let { activity ->
-                    shouldShowRequestPermissionRationale(activity, it)
-                }
-            }
-
-            if (permanentlyMappedList.contains(false)) {
-                state = PermissionState.PermanentlyDenied
-            }
-        }
-        return state
+        else -> PermissionState.Denied
     }
+}
 
     fun Fragment.registerPermission(onPermissionResult: (PermissionState) -> Unit): Permission {
         return Permission(
