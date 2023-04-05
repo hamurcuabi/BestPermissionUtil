@@ -2,11 +2,11 @@ package com.example.bestpermissionutil
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.emrhmrc.permy.PermissionUtil
-import com.emrhmrc.permy.PermissionUtil.PermissionState.*
-import com.emrhmrc.permy.PermissionUtil.launchMultiplePermission
-import com.emrhmrc.permy.PermissionUtil.launchSinglePermission
-import com.emrhmrc.permy.PermissionUtil.registerPermission
+import com.emrhmrc.permy.PermissionState
+import com.emrhmrc.permy.onDenied
+import com.emrhmrc.permy.onGranted
+import com.emrhmrc.permy.onPermanentlyDenied
+import com.emrhmrc.permy.registerPermission
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,31 +18,23 @@ class MainActivity : AppCompatActivity() {
         onStoragePermissionResult(it)
     }
 
-    private fun onStoragePermissionResult(state: PermissionUtil.PermissionState) {
-        when (state) {
-            Denied -> {
-                TODO()
-            }
-            Granted -> {
-                TODO()
-            }
-            PermanentlyDenied -> {
-                TODO()
-            }
+    private fun onStoragePermissionResult(state: PermissionState) {
+        state.onGranted {
+
+        }.onDenied {
+
+        }.onPermanentlyDenied {
+
         }
     }
 
-    private fun onCameraPermissionResult(state: PermissionUtil.PermissionState) {
-        when (state) {
-            Denied -> {
-                TODO()
-            }
-            Granted -> {
-                TODO()
-            }
-            PermanentlyDenied -> {
-                TODO()
-            }
+    private fun onCameraPermissionResult(state: PermissionState) {
+        state.onGranted {
+
+        }.onDenied {
+
+        }.onPermanentlyDenied {
+
         }
     }
 
@@ -50,13 +42,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        cameraPermission.launchSinglePermission(android.Manifest.permission.CAMERA)
+        cameraPermission.launch(android.Manifest.permission.CAMERA)
 
-        storagePermission.launchMultiplePermission(
-            arrayOf(
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
-            )
+        storagePermission.launch(
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE
         )
     }
 }

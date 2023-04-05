@@ -25,7 +25,7 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
 	...
-	 implementation 'com.github.hamurcuabi:BestPermissionUtil:1.0.3'
+	 implementation 'com.github.hamurcuabi:BestPermissionUtil:1.1.0'
 }
 ```
 
@@ -39,39 +39,30 @@ dependencies {
         onStoragePermissionResult(it)
     }
     
-     private fun onStoragePermissionResult(state: PermissionUtil.PermissionState) {
-        when (state) {
-            Denied -> {
-                TODO()
-            }
-            Granted -> {
-                TODO()
-            }
-            PermanentlyDenied -> {
-                TODO()
-            }
+     
+     private fun onStoragePermissionResult(state: PermissionState) {
+        state.onGranted {
+
+        }.onDenied {
+
+        }.onPermanentlyDenied {
+
         }
     }
 
-    private fun onCameraPermissionResult(state: PermissionUtil.PermissionState) {
-        when (state) {
-            Denied -> {
-                TODO()
-            }
-            Granted -> {
-                TODO()
-            }
-            PermanentlyDenied -> {
-                TODO()
-            }
+    private fun onCameraPermissionResult(state: PermissionState) {
+        state.onGranted {
+
+        }.onDenied {
+
+        }.onPermanentlyDenied {
+
         }
     }
     
-     cameraPermission.launchSinglePermission(android.Manifest.permission.CAMERA)
+     cameraPermission.launch(android.Manifest.permission.CAMERA)
 
-        storagePermission.launchMultiplePermission(
-            arrayOf(
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
-            )
+        storagePermission.launch(
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE
         )
